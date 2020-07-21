@@ -7,12 +7,13 @@ def binary_search(arr, target, start, end):
     mid = math.ceil(end / 2)
     if arr[mid] == target:
         return mid
+    elif arr[mid] > target:
+        return binary_search(arr, target, start, mid)
     else:
-        binary_search(arr, target, start, mid)
-
+        return binary_search(arr, target, mid, end)
 
 arr1 = [-9, -8, -6, -4, -3, -2, 0, 1, 2, 3, 5, 7, 8, 9]
-binary_search(arr1, -8, 0, len(arr1)-1)
+print(binary_search(arr1, -8, 0, len(arr1)-1))
 
 # STRETCH: implement an order-agnostic binary search
 # This version of binary search should correctly find
@@ -22,5 +23,5 @@ binary_search(arr1, -8, 0, len(arr1)-1)
 # or iteratively
 
 
-def agnostic_binary_search(arr, target):
-    # Your code here
+# def agnostic_binary_search(arr, target):
+#     # Your code here
