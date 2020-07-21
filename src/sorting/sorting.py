@@ -1,4 +1,7 @@
 # TO-DO: complete the helper function below to merge 2 sorted arrays
+import math
+
+
 def merge(arrA, arrB):
     elements = len(arrA) + len(arrB)
     merged_arr = [0] * elements
@@ -12,17 +15,33 @@ def merge(arrA, arrB):
     return merged_arr
 
 
-arr1 = [1, 5, 8, 4, 2, 9, 6, 0, 3, 7]
-print(merge(arr1, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]))
-
 # TO-DO: implement the Merge Sort function below recursively
 
 
-# def merge_sort(arr):
-#     # Your code here
+def merge_sort(arr):
+    # Your code here
+    mid = math.ceil(len(arr) / 2)
+    if len(arr) == 1:
+        return arr
+    a = merge_sort(arr[:mid])
+    b = merge_sort(arr[mid:])
+    i = 0
+    j = 0
+    result = []
+    while i != len(a) or j != len(b):
+        if i != len(a) and (j == len(b) or a[i] < b[j]):
+            result.append(a[i])
+            i += 1
+        else:
+            result.append(b[j])
+            j += 1
+    return result
+    
+    
+     
 
-#     return arr
-
+arr1 = [1, 5, 8, 4, 2, 9, 6, 0, 3, 7]
+print(merge_sort(arr1))
 # # STRETCH: implement the recursive logic for merge sort in a way that doesn't
 # # utilize any extra memory
 # # In other words, your implementation should not allocate any additional lists
