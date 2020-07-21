@@ -20,6 +20,8 @@ def merge(arrA, arrB):
 
 def merge_sort(arr):
     # Your code here
+    if len(arr) == 0:
+        return arr
     mid = math.ceil(len(arr) / 2)
     if len(arr) == 1:
         return arr
