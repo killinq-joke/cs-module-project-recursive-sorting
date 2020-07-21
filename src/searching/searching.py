@@ -4,6 +4,8 @@ import math
 
 def binary_search(arr, target, start, end):
     # Your code here
+    if start >= end:
+        return -1
     mid = math.ceil((end + start) / 2)
     if arr[mid] == target:
         return mid
@@ -11,8 +13,7 @@ def binary_search(arr, target, start, end):
         return binary_search(arr, target, start, 0)
     elif start == 1:
         return binary_search(arr, target, 0, end)
-    elif end == 0 or start == len(arr)-1:
-        return -1
+    
     elif arr[mid] > target:
         return binary_search(arr, target, start, mid)
     elif arr[mid] < target:
