@@ -4,6 +4,10 @@ import math
 
 def binary_search(arr, target, start, end):
     # Your code here
+    if start == end:
+        return -1
+    if end == 1:
+        end = 0
     mid = math.ceil(end / 2)
     if arr[mid] == target:
         return mid
@@ -11,8 +15,9 @@ def binary_search(arr, target, start, end):
         return binary_search(arr, target, start, mid)
     else:
         return binary_search(arr, target, mid, end)
+    return -1
 
-arr1 = [-9, -8, -6, -4, -3, -2, 0, 1, 2, 3, 5, 7, 8, 9]
+arr1 = [-8, 2, 6]
 print(binary_search(arr1, -8, 0, len(arr1)-1))
 
 # STRETCH: implement an order-agnostic binary search
